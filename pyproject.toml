@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "newscorp-no"
+version = "0.1.0"
+description = ""
+authors = ["Leo Orpilla III <hi@ldgrp.me>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.24.2"
+scikit-learn = "^1.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
