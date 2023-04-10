@@ -3,7 +3,6 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Optional
 import json
-import difflib
 
 FILE_DELIMITER = '____________________________________________________________'
 
@@ -88,7 +87,6 @@ if __name__ == '__main__':
         print(f'Found {len(raw_records)} records')
         records = [parse_record(record.split('\n')) for record in raw_records]
 
-        differ = difflib.Differ()
         uniq_records = {}
         for record in records:
             key = record.title + record.publication_date
