@@ -6,6 +6,17 @@ import json
 
 FILE_DELIMITER = '____________________________________________________________'
 
+IN_FILE = './data/proquest_export.txt'
+OUT_FILE = './data/articles.json'
+
+LINKS = 'Links:'
+FULL_TEXT = 'Full text:'
+PUBLICATION_DATE = 'Publication date:'
+LAST_UPDATED_DATE = 'Last updated:'
+SUBJECT = 'Subject:'
+CREDIT = 'CREDIT:'
+
+
 @dataclass
 class Record:
     title: str
@@ -24,13 +35,6 @@ State = Enum('State', [
     'IDLE',  
     'FINDING_TEXT',
 ])
-
-LINKS = 'Links:'
-FULL_TEXT = 'Full text:'
-PUBLICATION_DATE = 'Publication date:'
-LAST_UPDATED_DATE = 'Last updated:'
-SUBJECT = 'Subject:'
-CREDIT = 'CREDIT:'
 
 def parse_record(raw: List[str]) -> Record:
     """Parse a record from ProQuest export into a Record object"""
@@ -73,9 +77,6 @@ def parse_record(raw: List[str]) -> Record:
     if len(maybe_credit) > 1:
         credit = [v.strip() for v in maybe_credit[1].split(';')]
     return Record(title, publication_date, last_updated, subject, links, text, credit)
-
-IN_FILE = 'proquest_export.txt'
-OUT_FILE = 'exports.json'
 
 if __name__ == '__main__':
     # Import txt from ProQuest export
